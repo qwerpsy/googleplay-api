@@ -44,7 +44,7 @@ class GooglePlayAPI(object):
     ACCOUNT_TYPE_HOSTED_OR_GOOGLE = "HOSTED_OR_GOOGLE"
     authSubToken = None
 
-<<<<<<< HEAD
+
     def __init__(self, androidId=None, lang=None, proxies=None, debug=False): # you must use a device-associated androidId value
         self.preFetch = {}
         if androidId == None:
@@ -57,17 +57,6 @@ class GooglePlayAPI(object):
         self.lang = lang
         self.debug = debug
         self.proxies = proxies
-=======
-    def __init__(self, androidId=None, lang=None, debug=False): # you must use a device-associated androidId value
-        self.preFetch = {}
-        if androidId == None:
-            androidId = config.ANDROID_ID
-        if lang == None:
-            lang = config.LANG
-        self.androidId = androidId
-        self.lang = lang
-        self.debug = debug
->>>>>>> c463cbe5896ed5a0923ed3a06029376ad229b6eb
 
     def toDict(self, protoObj):
         """Converts the (protobuf) result from an API call into a dict, for
@@ -137,11 +126,9 @@ class GooglePlayAPI(object):
             headers = {
                 "Accept-Encoding": "",
             }
-<<<<<<< HEAD
+
             response = requests.post(self.URL_LOGIN, data=params, headers=headers, verify=False, proxies=self.proxies)
-=======
-            response = requests.post(self.URL_LOGIN, data=params, headers=headers, verify=False)
->>>>>>> c463cbe5896ed5a0923ed3a06029376ad229b6eb
+
             data = response.text.split()
             params = {}
             for d in data:
@@ -176,18 +163,13 @@ class GooglePlayAPI(object):
                 headers["Content-Type"] = post_content_type
 
             url = "https://android.clients.google.com/fdfe/%s" % path
-<<<<<<< HEAD
+
             print url
             if datapost is not None:
                 response = requests.post(url, data=datapost, headers=headers, verify=False, proxies=self.proxies)
             else:
                 response = requests.get(url, headers=headers, verify=False, proxies=self.proxies)
-=======
-            if datapost is not None:
-                response = requests.post(url, data=datapost, headers=headers, verify=False)
-            else:
-                response = requests.get(url, headers=headers, verify=False)
->>>>>>> c463cbe5896ed5a0923ed3a06029376ad229b6eb
+
             data = response.content
 
         '''
@@ -302,10 +284,7 @@ class GooglePlayAPI(object):
                    "Accept-Encoding": "",
                   }
 
-<<<<<<< HEAD
+
         response = requests.get(url, headers=headers, cookies=cookies, verify=False, proxies=self.proxies)
-=======
-        response = requests.get(url, headers=headers, cookies=cookies, verify=False)
->>>>>>> c463cbe5896ed5a0923ed3a06029376ad229b6eb
         return response.content
 
